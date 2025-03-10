@@ -149,7 +149,7 @@ export default function Footer() {
               underline="hover"
               variant="body2"
             >
-              Conditions d'utilisation
+              Conditions d&apos;utilisation
             </MuiLink>
           </Box>
         </Box>
