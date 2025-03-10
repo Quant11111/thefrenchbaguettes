@@ -29,10 +29,10 @@ export default function Home() {
         >
           <h1 style={{ paddingBottom: "1rem" }}>The French Baguettes</h1>
           <ul>
-            <li>🥖 Baguette</li>
-            <li>🥖 Pain de Campagne</li>
-            <li>🥖 Fougasse</li>
-            <li>🥖 Brioche</li>
+            <li>🥖 un bon savoir faire</li>
+            <li>🥖 du bon matériel</li>
+            <li>🥖 de bons artisans</li>
+            <li>🥖 de bonnes idées</li>
           </ul>
 
           <div className={styles.ctas}>
