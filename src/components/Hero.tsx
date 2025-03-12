@@ -1,76 +1,99 @@
 "use client";
 
 import { Box, Container, Typography, Button, Grid, Paper } from "@mui/material";
+import Logo from "./Logo";
 
 export default function Hero() {
   return (
     <Box
       sx={{
         position: "relative",
-        bgcolor: "background.paper",
-        pt: { xs: 4, md: 8 },
-        pb: { xs: 8, md: 12 },
+        bgcolor: "primary.main",
+        color: "white",
+        pt: { xs: 8, md: 12 },
+        pb: { xs: 12, md: 16 },
         overflow: "hidden",
       }}
     >
-      {/* Background gradient */}
+      {/* Éléments décoratifs */}
       <Box
         sx={{
           position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
+          top: "10%",
+          right: "5%",
+          width: "200px",
+          height: "200px",
+          borderRadius: "50%",
           background:
-            "radial-gradient(circle at 20% 20%, rgba(30, 58, 138, 0.05) 0%, rgba(255, 255, 255, 0) 50%)",
+            "radial-gradient(circle, rgba(212,175,55,0.2) 0%, rgba(212,175,55,0) 70%)",
+          zIndex: 0,
+        }}
+      />
+
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: "10%",
+          left: "5%",
+          width: "300px",
+          height: "300px",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, rgba(212,175,55,0.15) 0%, rgba(212,175,55,0) 70%)",
           zIndex: 0,
         }}
       />
 
       <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        <Grid container spacing={4} alignItems="center">
+        <Grid container spacing={6} alignItems="center">
           <Grid item xs={12} md={6}>
-            <Typography
-              component="h1"
-              variant="h2"
-              color="text.primary"
-              gutterBottom
-              sx={{
-                fontWeight: 800,
-                fontSize: { xs: "2.5rem", md: "3.5rem" },
-                lineHeight: 1.2,
-              }}
-            >
-              Solutions Web{" "}
-              <Box component="span" sx={{ color: "primary.main" }}>
-                innovantes
-              </Box>{" "}
-              et{" "}
-              <Box component="span" sx={{ color: "secondary.main" }}>
-                performantes
+            <Box sx={{ mb: 4 }}>
+              <Box sx={{ display: "inline-block", mb: 3 }}>
+                <Logo variant="text" size="large" color="light" />
               </Box>
-            </Typography>
+              <Typography
+                variant="h2"
+                component="h1"
+                gutterBottom
+                sx={{
+                  fontWeight: 700,
+                  fontSize: { xs: "2.5rem", md: "3.5rem" },
+                  lineHeight: 1.2,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                Software{" "}
+                <Box component="span" sx={{ color: "secondary.main" }}>
+                  Agency
+                </Box>
+              </Typography>
+            </Box>
 
             <Typography
               variant="h5"
-              color="text.secondary"
               paragraph
-              sx={{ mb: 4, fontWeight: 400 }}
+              sx={{
+                mb: 4,
+                fontWeight: 400,
+                opacity: 0.9,
+                maxWidth: "500px",
+              }}
             >
               Experts en développement Web2 et Web3, nous créons des expériences
               numériques sur mesure pour répondre à vos besoins spécifiques.
             </Typography>
 
-            <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
+            <Box sx={{ display: "flex", gap: 3, flexWrap: "wrap" }}>
               <Button
                 variant="contained"
-                color="primary"
+                color="secondary"
                 size="large"
                 href="#services"
                 sx={{
-                  borderRadius: "28px",
                   px: 4,
                   py: 1.5,
+                  color: "primary.main",
                   fontWeight: 600,
                 }}
               >
@@ -78,61 +101,21 @@ export default function Hero() {
               </Button>
               <Button
                 variant="outlined"
-                color="primary"
+                color="secondary"
                 size="large"
                 href="#contact"
                 sx={{
-                  borderRadius: "28px",
                   px: 4,
                   py: 1.5,
+                  borderWidth: 2,
                   fontWeight: 600,
+                  "&:hover": {
+                    borderWidth: 2,
+                  },
                 }}
               >
                 Nous contacter
               </Button>
-            </Box>
-
-            <Box
-              sx={{
-                mt: 6,
-                display: "flex",
-                flexWrap: "wrap",
-                gap: 4,
-                alignItems: "center",
-              }}
-            >
-              <Typography variant="subtitle2" color="text.secondary">
-                Ils nous font confiance:
-              </Typography>
-              <Box
-                sx={{ display: "flex", gap: 4, flexWrap: "wrap", opacity: 0.7 }}
-              >
-                {/* Placeholder for client logos */}
-                <Box
-                  sx={{
-                    width: 100,
-                    height: 30,
-                    bgcolor: "grey.300",
-                    borderRadius: 1,
-                  }}
-                />
-                <Box
-                  sx={{
-                    width: 100,
-                    height: 30,
-                    bgcolor: "grey.300",
-                    borderRadius: 1,
-                  }}
-                />
-                <Box
-                  sx={{
-                    width: 100,
-                    height: 30,
-                    bgcolor: "grey.300",
-                    borderRadius: 1,
-                  }}
-                />
-              </Box>
             </Box>
           </Grid>
 
@@ -142,44 +125,108 @@ export default function Hero() {
             md={6}
             sx={{ display: "flex", justifyContent: "center" }}
           >
-            <Paper
-              elevation={6}
+            <Box
               sx={{
-                borderRadius: 4,
-                overflow: "hidden",
                 position: "relative",
                 width: { xs: "100%", md: "90%" },
                 height: { xs: 300, md: 400 },
-                transform: { md: "rotate(2deg)" },
-                transition: "transform 0.3s ease-in-out",
-                "&:hover": {
-                  transform: { md: "rotate(0deg) scale(1.02)" },
-                },
               }}
             >
-              <Box
+              <Paper
+                elevation={0}
                 sx={{
-                  position: "relative",
-                  width: "100%",
-                  height: "100%",
-                  background:
-                    "linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)",
+                  position: "absolute",
+                  top: "10%",
+                  left: "10%",
+                  width: "80%",
+                  height: "80%",
+                  bgcolor: "secondary.main",
+                  border: "1px solid rgba(255,255,255,0.2)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "white",
+                  zIndex: 1,
                 }}
               >
-                <Typography
-                  variant="h4"
-                  sx={{ fontWeight: "bold", textAlign: "center", px: 2 }}
-                >
-                  TheFrenchBaguettes
-                </Typography>
-              </Box>
-            </Paper>
+                <Box sx={{ p: 4 }}>
+                  <Logo variant="icon" size="large" color="dark" />
+                </Box>
+              </Paper>
+
+              <Paper
+                elevation={0}
+                sx={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "80%",
+                  height: "80%",
+                  bgcolor: "transparent",
+                  border: "2px solid rgba(212,175,55,0.5)",
+                  zIndex: 0,
+                }}
+              />
+
+              <Paper
+                elevation={0}
+                sx={{
+                  position: "absolute",
+                  bottom: 0,
+                  right: 0,
+                  width: "80%",
+                  height: "80%",
+                  bgcolor: "transparent",
+                  border: "2px solid rgba(212,175,55,0.5)",
+                  zIndex: 0,
+                }}
+              />
+            </Box>
           </Grid>
         </Grid>
+
+        <Box
+          sx={{
+            mt: { xs: 8, md: 12 },
+            pt: 4,
+            borderTop: "1px solid rgba(255,255,255,0.1)",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: 4,
+          }}
+        >
+          <Typography variant="subtitle1" sx={{ opacity: 0.7 }}>
+            Ils nous font confiance:
+          </Typography>
+          <Box sx={{ display: "flex", gap: 6, flexWrap: "wrap", opacity: 0.7 }}>
+            {/* Placeholder pour les logos clients */}
+            <Box
+              sx={{
+                width: 100,
+                height: 30,
+                bgcolor: "rgba(255,255,255,0.1)",
+                borderRadius: 0,
+              }}
+            />
+            <Box
+              sx={{
+                width: 100,
+                height: 30,
+                bgcolor: "rgba(255,255,255,0.1)",
+                borderRadius: 0,
+              }}
+            />
+            <Box
+              sx={{
+                width: 100,
+                height: 30,
+                bgcolor: "rgba(255,255,255,0.1)",
+                borderRadius: 0,
+              }}
+            />
+          </Box>
+        </Box>
       </Container>
     </Box>
   );

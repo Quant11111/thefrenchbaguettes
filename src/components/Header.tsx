@@ -5,7 +5,6 @@ import {
   AppBar,
   Box,
   Toolbar,
-  Typography,
   Button,
   Container,
   IconButton,
@@ -17,6 +16,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Link from "next/link";
+import Logo from "./Logo";
 
 const navItems = [
   { name: "Accueil", href: "/" },
@@ -35,19 +35,41 @@ export default function Header() {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2, fontWeight: "bold" }}>
-        TheFrenchBaguettes
-      </Typography>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{
+        textAlign: "center",
+        py: 3,
+        bgcolor: "primary.main",
+        height: "100%",
+      }}
+    >
+      <Box sx={{ mb: 3, display: "flex", justifyContent: "center" }}>
+        <Logo variant="text" color="light" />
+      </Box>
       <List>
         {navItems.map((item) => (
           <ListItem key={item.name} disablePadding>
             <ListItemButton
-              sx={{ textAlign: "center" }}
+              sx={{
+                textAlign: "center",
+                color: "white",
+                "&:hover": {
+                  bgcolor: "rgba(212, 175, 55, 0.1)",
+                },
+              }}
               component={Link}
               href={item.href}
             >
-              <ListItemText primary={item.name} />
+              <ListItemText
+                primary={item.name}
+                primaryTypographyProps={{
+                  fontWeight: 600,
+                  letterSpacing: "0.05em",
+                  textTransform: "uppercase",
+                  fontSize: "0.875rem",
+                }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
@@ -60,28 +82,14 @@ export default function Header() {
       <AppBar
         position="fixed"
         color="default"
-        elevation={1}
-        sx={{
-          bgcolor: "rgba(255, 255, 255, 0.9)",
-          backdropFilter: "blur(10px)",
-        }}
+        elevation={0}
+        sx={{ bgcolor: "white" }}
       >
         <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            <Typography
-              variant="h6"
-              component={Link}
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontWeight: 700,
-                color: "primary.main",
-                textDecoration: "none",
-              }}
-            >
-              TheFrenchBaguettes
-            </Typography>
+          <Toolbar disableGutters sx={{ height: 80 }}>
+            <Box sx={{ display: { xs: "none", md: "flex" }, mr: 4 }}>
+              <Logo size="medium" />
+            </Box>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
@@ -90,27 +98,21 @@ export default function Header() {
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleDrawerToggle}
-                color="inherit"
+                sx={{ color: "primary.main" }}
               >
                 <MenuIcon />
               </IconButton>
             </Box>
 
-            <Typography
-              variant="h6"
-              component={Link}
-              href="/"
+            <Box
               sx={{
-                mr: 2,
-                display: { xs: "flex", md: "none" },
                 flexGrow: 1,
-                fontWeight: 700,
-                color: "primary.main",
-                textDecoration: "none",
+                display: { xs: "flex", md: "none" },
+                justifyContent: "center",
               }}
             >
-              TheFrenchBaguettes
-            </Typography>
+              <Logo size="small" />
+            </Box>
 
             <Box
               sx={{
@@ -125,11 +127,28 @@ export default function Header() {
                   component={Link}
                   href={item.href}
                   sx={{
-                    color: "text.primary",
+                    color: "primary.main",
                     mx: 1,
+                    fontWeight: 600,
+                    letterSpacing: "0.05em",
+                    fontSize: "0.875rem",
+                    position: "relative",
+                    "&::after": {
+                      content: '""',
+                      position: "absolute",
+                      bottom: 0,
+                      left: "50%",
+                      width: 0,
+                      height: 2,
+                      bgcolor: "secondary.main",
+                      transition: "all 0.3s ease",
+                      transform: "translateX(-50%)",
+                    },
                     "&:hover": {
-                      color: "primary.main",
-                      backgroundColor: "transparent",
+                      bgcolor: "transparent",
+                      "&::after": {
+                        width: "70%",
+                      },
                     },
                   }}
                 >
@@ -145,8 +164,13 @@ export default function Header() {
                 component={Link}
                 href="#contact"
                 sx={{
-                  borderRadius: "24px",
                   px: 3,
+                  py: 1,
+                  bgcolor: "primary.main",
+                  color: "white",
+                  "&:hover": {
+                    bgcolor: "primary.dark",
+                  },
                 }}
               >
                 Nous contacter
@@ -165,14 +189,14 @@ export default function Header() {
         }}
         sx={{
           display: { xs: "block", md: "none" },
-          "& .MuiDrawer-paper": { boxSizing: "border-box", width: 240 },
+          "& .MuiDrawer-paper": { boxSizing: "border-box", width: 280 },
         }}
       >
         {drawer}
       </Drawer>
 
       {/* Spacer to prevent content from hiding behind the AppBar */}
-      <Toolbar />
+      <Toolbar sx={{ height: 80 }} />
     </Box>
   );
 }

@@ -22,42 +22,42 @@ const services = [
     description:
       "Création de sites web et d'applications web modernes, réactifs et performants avec les dernières technologies.",
     icon: CodeIcon,
-    color: "#1e3a8a",
+    colorCode: "#D4AF37",
   },
   {
     title: "Solutions Web3",
     description:
       "Développement de dApps, smart contracts et intégrations blockchain pour vos projets innovants.",
     icon: StorageIcon,
-    color: "#c2410c",
+    colorCode: "#D4AF37",
   },
   {
     title: "Applications Mobiles",
     description:
       "Conception et développement d'applications mobiles natives et cross-platform pour iOS et Android.",
     icon: PhoneIphoneIcon,
-    color: "#0e7490",
+    colorCode: "#D4AF37",
   },
   {
     title: "Design UX/UI",
     description:
       "Création d'interfaces utilisateur intuitives et esthétiques pour une expérience utilisateur optimale.",
     icon: DesignServicesIcon,
-    color: "#4f46e5",
+    colorCode: "#D4AF37",
   },
   {
     title: "Sécurité & Audit",
     description:
       "Audit de sécurité de vos applications et smart contracts pour garantir la protection de vos données.",
     icon: SecurityIcon,
-    color: "#7e22ce",
+    colorCode: "#D4AF37",
   },
   {
     title: "Support & Maintenance",
     description:
       "Services de support technique et maintenance continue pour assurer la pérennité de vos solutions.",
     icon: SupportAgentIcon,
-    color: "#be123c",
+    colorCode: "#D4AF37",
   },
 ];
 
@@ -67,7 +67,7 @@ export default function Services() {
       id="services"
       sx={{
         py: { xs: 8, md: 12 },
-        bgcolor: "background.default",
+        bgcolor: "white",
       }}
     >
       <Container maxWidth="lg">
@@ -75,21 +75,28 @@ export default function Services() {
           <Typography
             variant="overline"
             component="div"
-            color="primary"
+            color="secondary"
             gutterBottom
-            sx={{ fontWeight: 600, letterSpacing: 1.5 }}
+            sx={{
+              fontWeight: 600,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+            }}
           >
-            NOS SERVICES
+            Nos Services
           </Typography>
           <Typography
             variant="h2"
             component="h2"
+            color="primary"
             gutterBottom
             sx={{
               fontWeight: 700,
               fontSize: { xs: "2rem", md: "2.75rem" },
               maxWidth: "800px",
               mx: "auto",
+              textTransform: "uppercase",
+              letterSpacing: "0.02em",
             }}
           >
             Des solutions complètes pour vos projets numériques
@@ -115,47 +122,54 @@ export default function Services() {
                   height: "100%",
                   display: "flex",
                   flexDirection: "column",
-                  borderRadius: 3,
                   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   "&:hover": {
                     transform: "translateY(-8px)",
-                    boxShadow: 10,
+                    boxShadow: 4,
+                  },
+                  position: "relative",
+                  overflow: "hidden",
+                  "&::before": {
+                    content: '""',
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "4px",
+                    height: "100%",
+                    bgcolor: "secondary.main",
                   },
                 }}
-                elevation={2}
+                elevation={0}
               >
                 <Box
                   sx={{
-                    p: 2,
+                    p: 3,
                     display: "flex",
                     alignItems: "center",
-                    justifyContent: "center",
+                    gap: 2,
                   }}
                 >
                   <Box
                     sx={{
-                      width: 60,
-                      height: 60,
-                      borderRadius: "50%",
+                      width: 50,
+                      height: 50,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      bgcolor: `${service.color}15`,
-                      color: service.color,
+                      color: "secondary.main",
                     }}
                   >
-                    <service.icon sx={{ fontSize: 30 }} />
+                    <service.icon sx={{ fontSize: 36 }} />
                   </Box>
-                </Box>
-                <CardContent sx={{ flexGrow: 1, pt: 0 }}>
                   <Typography
-                    gutterBottom
                     variant="h5"
                     component="h3"
-                    sx={{ fontWeight: 600 }}
+                    sx={{ fontWeight: 600, color: "primary.main" }}
                   >
                     {service.title}
                   </Typography>
+                </Box>
+                <CardContent sx={{ flexGrow: 1, pt: 0, px: 3, pb: 3 }}>
                   <Typography variant="body2" color="text.secondary">
                     {service.description}
                   </Typography>
@@ -172,7 +186,6 @@ export default function Services() {
             size="large"
             href="#contact"
             sx={{
-              borderRadius: "28px",
               px: 4,
               py: 1.5,
               fontWeight: 600,
